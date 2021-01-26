@@ -10,9 +10,11 @@ const app = props => {
       { name: 'Manu', age: 29 }, 
       { name: 'Stephanie', age: 26 }, 
     ],
-    otherStat: 'some othe values'
   });
-  
+
+  const [ otherState, setOtheState ] = useState('some other value');
+
+  console.log(personState, otherState);
 
   const switchEventHandler = () => {
     // console.log('WAS CLICK');
@@ -25,7 +27,6 @@ const app = props => {
         { name: 'Manu', age: 29 }, 
         { name: 'Stephanie', age: 27 }, 
       ],
-      otherStat: persons.otherStat,
     })
   }
   //return() {
