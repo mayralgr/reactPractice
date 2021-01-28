@@ -8,6 +8,7 @@ class App extends Component {
       { name: 'Manu', age: 29 }, 
       { name: 'Stephanie', age: 26 }, 
     ],
+    showPersons: false
   }
 
   switchEventHandler = ( newName ) => {
@@ -32,6 +33,11 @@ class App extends Component {
       ],
     })
   }
+
+  tooglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
   // better to use bind than arrow functions
   render() {
     // inline styles
@@ -46,19 +52,26 @@ class App extends Component {
       <div className="App">
         <h1>Hi I am a react app </h1>
         <button style={style}
-        onClick={() => this.switchEventHandler('MAXIMILIAN')}>Switch Name</button>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age}/>
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        click={this.switchEventHandler.bind(this,'Maxim!!!')}
-        changed={this.nameChangeHandler}
-        >More things</Person>
-        <Person 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age}/>
+        onClick={this.tooglePersonsHandler}>Toogle persons</button>
+        { this.state.showPersons ? 
+          <div>
+            <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age}/>
+            <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
+            click={this.switchEventHandler.bind(this,'Maxim!!!')}
+            changed={this.nameChangeHandler}
+            >More things</Person>
+            <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age}/>
+
+          </div>
+        : null
+        }
+        
       </div>
     );
   }
