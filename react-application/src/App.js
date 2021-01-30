@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from'./App.css';
 import Person from './Person/Person';
 // import styled from 'styled-components';
 // import Radium, {StyleRoot} from 'radium'
@@ -16,6 +16,9 @@ const StyledButton = styled.button`
         color: black;
       }
 `;*/
+
+let btnClass = [classes.Button];
+
 class App extends Component {
   state = {	
     persons: [
@@ -105,28 +108,27 @@ class App extends Component {
       //   backgroundColor: 'salmon',
       //   color: 'black'
       // };
-
-
+      btnClass.push(classes.Red);
 
 
     }
 
-    const classes = [];
+    /*const classes = [];
 
     if ( this.state.persons.length <= 2) {
       classes.push('red');
     }
     if ( this.state.persons.length <= 1) {
       classes.push('bold');
-    }
+    }*/
 
     return (
       //<StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi I am a react app </h1>
-          <p className={classes.join(' ')}>This is really working</p>
+          <p >This is really working</p>
           <button // alt={this.state.showPersons}
-          className="button"
+          className={btnClass.join(' ')}
           onClick={this.tooglePersonsHandler}>
             Toogle persons
             </button>
