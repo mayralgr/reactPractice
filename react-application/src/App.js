@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, {StyleRoot} from 'radium'
+import styled from 'styled-components';
+// import Radium, {StyleRoot} from 'radium'
+
+const StyledButton = styled.button`
+      background-color: ${props => props.alt ? 'red' : 'green'};
+      color:white;
+      font:inherit;
+      border: 1x solid blue;
+      padding: 8px;
+      cursor: pointer;
+      &:hover {
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+        color: black;
+      }
+`;
 class App extends Component {
   state = {	
     persons: [
@@ -29,7 +43,6 @@ class App extends Component {
     const personIndex = this.state.persons.findIndex( person => {
       return person.id === id;
     });
-    console.log(personIndex);
     const person = {
       ...this.state.persons[personIndex]
     }
@@ -87,11 +100,14 @@ class App extends Component {
 
           </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // };
+
+
+
 
     }
 
@@ -105,18 +121,22 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+      //<StyleRoot>
         <div className="App">
           <h1>Hi I am a react app </h1>
           <p className={classes.join(' ')}>This is really working</p>
-          <button style={style}
-          onClick={this.tooglePersonsHandler}>Toogle persons</button>
+          <StyledButton alt={this.state.showPersons}
+          onClick={this.tooglePersonsHandler}>
+            Toogle persons
+            </StyledButton>
           { persons }
         </div>
-      </StyleRoot>
+      //</StyleRoot>
       
     );
   }
 }
 
-export default Radium(App);
+export default App;
+
+//export default Radium(App);
