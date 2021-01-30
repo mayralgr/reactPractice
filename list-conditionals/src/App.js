@@ -5,38 +5,33 @@ import CharComponent from './CharComponent/CharComponent'
 class App extends Component {
   state = {
     word: '',
-    length: 0,
-    chars: [],
   }
-  lengtOfInputText = ( event ) => {
+  inputChangeHandler = ( event ) => {
     this.setState({
       word : event.target.value,
-      length : event.target.value.length,
-      chars : [...event.target.value]
     });
   }
 
   deleteChar = ( index ) => {
-    let newArray = [...this.state.chars];
+    let newArray = [...this.state.word];
     newArray.splice(index,1);
     this.setState({
-      word : newArray.join(''), 
-      length: newArray.length,
-      chars : newArray
+      word : newArray.join('')
     });
   }
 
 
   render() {
-
-
     let charComponents = null;
     
-    if ( this.state.chars.length > 0 ){
+    if ( this.state.word.length > 0 ){
       charComponents = (<div>
         {
-          this.state.chars.map( (value, index) => {
-            return <CharComponent char={value} key={index} click={()=> this.deleteChar(index)}/>
+          [...this.state.word].map( (value, index) => {
+            return <CharComponent 
+                    char={value} 
+                    key={index} 
+                    click={()=> this.deleteChar(index)}/>
           })
         }
       </div>
@@ -45,13 +40,15 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <input type='text' onChange={(event) => this.lengtOfInputText(event)} value={this.state.word}/>
+          <input type='text' 
+          onChange={(event) => this.inputChangeHandler(event)} 
+          value={this.state.word}/>
         </header>
         <p className="App-intro">
-          {this.state.length} characters in the input
+          {this.state.word.length} characters in the input
         </p>
-        <ValidationComponent textLength={this.state.length}/>
-        {charComponents}
+        <ValidationComponent textLength={this.state.word.length}/>
+        { charComponents }
       </div>
     );
   }
