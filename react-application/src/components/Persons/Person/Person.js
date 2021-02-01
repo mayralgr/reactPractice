@@ -24,11 +24,11 @@ const person = (props) => {
             width: '450px'
         }
     }*/
-    const rand = Math.random();
+    // const rand = Math.random();
 
-    if (rand > 0.7) {
-        throw new Error('Somenthing went wrong');
-    }
+    // if (rand > 0.7) {
+    //     throw new Error('Somenthing went wrong');
+    // }
     return (
         //<div className="Person" style={style}>
         //<StyledDiv>
