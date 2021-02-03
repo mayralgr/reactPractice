@@ -4,6 +4,14 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    console.log('app js constructor');
+  }
+
+  
+
   state = {	
     persons: [
       { id:'ffsfsf', name: 'Max', age: 28 }, 
@@ -11,6 +19,11 @@ class App extends Component {
       { id:'fwoeoa', name: 'Stephanie', age: 26 }, 
     ],
     showPersons: false
+  }
+  
+  static getDerivedStateFromProps(props,state) {
+    console.log('App js getDerivedStateFromProps', props);
+    return state;
   }
 
   switchEventHandler = ( newName ) => {
@@ -22,6 +35,23 @@ class App extends Component {
         { name: 'Stephanie', age: 27 }, 
       ],
     })
+  }
+
+  // componentWillMount() {
+  //   console.log('will mount ....');
+  // }
+
+  componentDidMount() {
+    console.log('[app.js] did mount');
+  }
+
+  shouldComponentUpdate() {
+    console.log('app.js shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('App.js componentDidUpdate');
   }
 
   nameChangeHandler= ( event, id ) => {
@@ -53,6 +83,7 @@ class App extends Component {
   }
   // better to use bind than arrow functions
   render() {
+    console.log('App js render')
     let persons = null;
 
     if (this.state.showPersons) {

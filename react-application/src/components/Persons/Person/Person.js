@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 // import './Person.css';
 import classes from './Person.css'
 // import Radium from 'radium';
@@ -18,34 +18,56 @@ const StyledDiv = styled.div`
 }`
 
 */
-const person = (props) => {
-    /*const style = {
-        '@media (min-width: 500px)': {
-            width: '450px'
-        }
-    }*/
-    // const rand = Math.random();
-
-    // if (rand > 0.7) {
-    //     throw new Error('Somenthing went wrong');
+class Person extends Component {
+    // static getDerivedStateFromProps(props, state) {
+    //     console.log('[Person.js], getDerivedStateFromProps');
+    //     return state;
     // }
-    return (
-        //<div className="Person" style={style}>
-        //<StyledDiv>
-        <div className={classes.Person}>
-            <p onClick={props.click} >I'm a {props.name} and I am {props.age} years old!</p>
-            {/**In children there is any element beetween the open and close tag */}
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name}/>
-        </div>
-        //</StyledDiv>
 
-            
-        // </div>
-    )
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('getSnapshotBeforeUpdate');
+        return {mesage: 'snapshot!'};
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[Person.js], componentDidUpdate');
+        console.log(snapshot);
+    }
+    render() {
+        console.log('[Person.js]');
+        /*const style = {
+            '@media (min-width: 500px)': {
+                width: '450px'
+            }
+        }*/
+        // const rand = Math.random();
+
+        // if (rand > 0.7) {
+        //     throw new Error('Somenthing went wrong');
+            // }
+        return (
+            //<div className="Person" style={style}>
+            //<StyledDiv>
+            <div className={classes.Person}>
+                <p onClick={this.props.click} >I'm a {this.props.name} and I am {this.props.age} years old!</p>
+                {/**In children there is any element beetween the open and close tag */}
+                <p>{this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name}/>
+            </div>
+            //</StyledDiv>
+
+                
+            // </div>
+        )
+    }
+
 };
 
-export default person;
+export default Person;
 
 
 //export default Radium(person);
