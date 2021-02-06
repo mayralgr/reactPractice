@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // import './Person.css';
 import classes from './Person.css'
+import Aux from '../../../hoc/Aux';
 // import Radium from 'radium';
 
 /*
@@ -52,12 +53,12 @@ class Person extends Component {
         return (
             //<div className="Person" style={style}>
             //<StyledDiv>
-            <div className={classes.Person}>
+            <Aux>
                 <p onClick={this.props.click} >I'm a {this.props.name} and I am {this.props.age} years old!</p>
                 {/**In children there is any element beetween the open and close tag */}
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name}/>
-            </div>
+            </Aux>
             //</StyledDiv>
 
                 
