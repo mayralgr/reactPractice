@@ -27,11 +27,11 @@ const Cockpit = (props) => {
         btnClass = classes.Red;
     }
 
-    if ( props.persons.length <= 2) {
+    if ( props.personsLenght <= 2) {
         assignedClasses.push(classes.red);
     }
 
-    if ( props.persons.length <= 1) {
+    if ( props.personsLenght <= 1) {
         assignedClasses.push(classes.bold);
     }
     return (
@@ -47,4 +47,5 @@ const Cockpit = (props) => {
     );
 }
 
-export default Cockpit;
+// store a snapshot, if the input changes, re-render
+export default React.memo(Cockpit);
