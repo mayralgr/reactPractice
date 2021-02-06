@@ -8,8 +8,17 @@ const Cockpit = (props) => {
         setTimeout(() => {
             alert('save data to cloud');
         }, 1000);
+        return () => {
+            console.log('cleanup using useEffect')
+        }
     }, [props.persons]) // point to the data that is use in use effect
     // if passes [] it runs everytime a dependency changes, if no dependency, just runs once
+    useEffect(() => {
+        console.log('2nd useefect');
+        return () => {
+            console.log('cleanup using 2nd useEffect')
+        }
+    })
     const assignedClasses = [];
     let btnClass = '';
     

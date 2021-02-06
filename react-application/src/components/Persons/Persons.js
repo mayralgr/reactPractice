@@ -8,6 +8,9 @@ class Persons extends Component {
     // componentWillReceiveProps(props) {
     //     console.log('persons.js componentWillReceiveProps', props);
     // } --> depracted to component did update or get derived----
+    componentWillUnmount() {
+        console.log('persons.js, will unmount')
+    }
 
     render () {
         console.log('persons rendering...');
