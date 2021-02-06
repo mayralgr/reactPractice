@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Person from './Person/Person';
 // import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-class Persons extends Component {
+// pure component is a component with a complete props checked before update
+class Persons extends PureComponent {
 
     // componentWillReceiveProps(props) {
     //     console.log('persons.js componentWillReceiveProps', props);
@@ -12,11 +13,13 @@ class Persons extends Component {
         console.log('persons.js, will unmount')
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[persons.js ]shouldComponentUpdate');
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[persons.js ]shouldComponentUpdate');
         
-        return nextProps.persons !== this.props.persons;
-    }
+    //     return nextProps.persons !== this.props.persons;
+    // }
+
+
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[persons.js ]getSnapshotBeforeUpdate');
