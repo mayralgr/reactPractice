@@ -12,6 +12,21 @@ class Persons extends Component {
         console.log('persons.js, will unmount')
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[persons.js ]shouldComponentUpdate');
+        
+        return nextProps.persons !== this.props.persons;
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('[persons.js ]getSnapshotBeforeUpdate');
+        return {mesage: 'snapshot!'};
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[Persons.js], componentDidUpdate');
+        console.log(snapshot);
+    }
+
     render () {
         console.log('persons rendering...');
         return this.props.persons.map( (person , index) => {

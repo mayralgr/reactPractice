@@ -5,10 +5,11 @@ const Cockpit = (props) => {
     useEffect(() => {
         console.log('cockpit useEffect');
         // http 
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             alert('save data to cloud');
         }, 1000);
         return () => {
+            clearTimeout(timer);
             console.log('cleanup using useEffect')
         }
     }, [props.persons]) // point to the data that is use in use effect
