@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 // import './Person.css';
 import classes from './Person.css'
 import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
 // import Radium from 'radium';
 
 /*
@@ -69,7 +70,7 @@ class Person extends Component {
 
 };
 
-export default Person;
+export default withClass(Person,classes.Person);
 
 
 //export default Radium(person);
