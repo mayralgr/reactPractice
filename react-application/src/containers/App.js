@@ -21,6 +21,7 @@ class App extends Component {
     ],
     showPersons: false,
     showCockpit: true,
+    counter: 0,
   }
   
   static getDerivedStateFromProps(props,state) {
@@ -68,8 +69,11 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
     // without const person = Object.assign({},this.state.persons[personIndex]);
-    this.setState({
-      persons: persons
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        change: prevState.counter + 1,
+      }
     });
   }
 
