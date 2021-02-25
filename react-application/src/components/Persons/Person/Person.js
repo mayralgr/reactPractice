@@ -67,6 +67,7 @@ class Person extends Component {
             //<StyledDiv>
             // or just React.Fragment || Fragment importing it from react instead of Aux
             <Aux>
+                {this.props.isAuth ? <p>authenticated</p> : <p>Please log in</p>}
                 <p onClick={this.props.click} >I'm a {this.props.name} and I am {this.props.age} years old!</p>
                 {/**In children there is any element beetween the open and close tag */}
                 <p key="i2">{this.props.children}</p>
