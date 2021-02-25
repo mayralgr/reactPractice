@@ -11,8 +11,6 @@ class App extends Component {
     console.log('app js constructor');
   }
 
-  
-
   state = {	
     persons: [
       { id:'ffsfsf', name: 'Max', age: 28 }, 

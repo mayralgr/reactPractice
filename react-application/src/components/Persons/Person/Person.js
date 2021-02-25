@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import classes from './Person.css'
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
+import PropTypes from 'prop-types';
 // import Radium from 'radium';
 
 /*
@@ -21,6 +22,16 @@ const StyledDiv = styled.div`
 
 */
 class Person extends Component {
+
+    constructor(props) {
+        super(props)
+        this.inputElementRef = React.createRef();
+    }
+
+    componentDidMount() {
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
     // static getDerivedStateFromProps(props, state) {
     //     console.log('[Person.js], getDerivedStateFromProps');
     //     return state;
@@ -58,8 +69,14 @@ class Person extends Component {
             <Aux>
                 <p onClick={this.props.click} >I'm a {this.props.name} and I am {this.props.age} years old!</p>
                 {/**In children there is any element beetween the open and close tag */}
-                <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name}/>
+                <p key="i2">{this.props.children}</p>
+                <input
+                    key="i3"
+                    // ref={(inputEl) =>  {this.inputElement = inputEl}}
+                    ref = {this.inputElementRef}
+                    type="text" 
+                    onChange={this.props.changed} 
+                    value={this.props.name}/>
             </Aux>
             //</StyledDiv>
 
@@ -69,6 +86,13 @@ class Person extends Component {
     }
 
 };
+
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+}
 
 export default withClass(Person,classes.Person);
 
